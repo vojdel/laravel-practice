@@ -16,7 +16,11 @@ class variosmetodosrecursos extends Controller
     public function index()
     {
         $info = info::all();
-        dd($info);  // funcion de debuger de laravel sirve tambienpara ver si manda los datos
+        //dd($info);  // funcion de debuger de laravel sirve tambienpara ver si manda los datos
+        //return view('varios')->with('info', $info);
+        //return view('varios', ['info' => $info]);
+        //return view('varios', compact('info')); // para mandar la variable sin el simbolo de $
+        return view('varios.index');
     }
 
     /**
@@ -26,19 +30,21 @@ class variosmetodosrecursos extends Controller
      */
     public function create()
     {
-        $info = new info;
-        $info->nombre = "Jose gregorio vasquez";
-        $info->descripcion = "estudiante TI";
+       /* $info = new info;
+        $info->nombre = "Cristina";
+        $info->descripcion = "";
         $info->save();
 
-        /* otra forma de guardar 
+        otra forma de guardar 
         
         info::create([
             'nombre'=>'Dan',
             'descripcion'=>'Auditor'
-        ]); */
+        ]);
         
-        return "datos guardados correctamente";
+        return "datos guardados correctamente";*/
+
+        return view('varios.create');
     }
 
     /**
@@ -60,9 +66,10 @@ class variosmetodosrecursos extends Controller
      */
     public function show($id)
     {
-        $info = info::find($id);
+        /* $info = info::find($id);
         $info->delete();
-        return 'El registro '.$id.' ha sido eliminado';
+        return 'El registro '.$id.' ha sido eliminado'; */
+        return view('varios.show', compact($id));
     }
 
     /**
@@ -73,13 +80,14 @@ class variosmetodosrecursos extends Controller
      */
     public function edit($id)
     {
-        // $info = info::findOrFail($id); //solo por id
-        /*$info = info::where('id', $id)->firstOrFail(); para los campos especificos */
+        /* // $info = info::findOrFail($id); //solo por id
+        $info = info::where('id', $id)->firstOrFail(); para los campos especificos 
         $info = info::find($id);
         $info->nombre = 'J. Daniel';
         $info->descripcion = 'Programador';
         $info->save();
-        return 'Datos Actualizados';
+        return 'Datos Actualizados'; */
+        return view('varios.edit');
     }
 
     /**
