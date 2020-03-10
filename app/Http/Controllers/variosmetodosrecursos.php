@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\info;
+
 class variosmetodosrecursos extends Controller
 {
     /**
@@ -13,7 +15,8 @@ class variosmetodosrecursos extends Controller
      */
     public function index()
     {
-        return 'este es el index';
+        $info = info::all();
+        dd($info);  // funcion de debuger de laravel sirve tambienpara ver si manda los datos
     }
 
     /**
@@ -23,7 +26,19 @@ class variosmetodosrecursos extends Controller
      */
     public function create()
     {
-        //
+        $info = new info;
+        $info->nombre = "Jose gregorio vasquez";
+        $info->descripcion = "estudiante TI";
+        $info->save();
+
+        /* otra forma de guardar 
+        
+        info::create([
+            'nombre'=>'Dan',
+            'descripcion'=>'Auditor'
+        ]); */
+        
+        return "datos guardados correctamente";
     }
 
     /**
@@ -45,7 +60,9 @@ class variosmetodosrecursos extends Controller
      */
     public function show($id)
     {
-        //
+        $info = info::find($id);
+        $info->delete();
+        return 'El registro '.$id.' ha sido eliminado';
     }
 
     /**
@@ -56,7 +73,13 @@ class variosmetodosrecursos extends Controller
      */
     public function edit($id)
     {
-        //
+        // $info = info::findOrFail($id); //solo por id
+        /*$info = info::where('id', $id)->firstOrFail(); para los campos especificos */
+        $info = info::find($id);
+        $info->nombre = 'J. Daniel';
+        $info->descripcion = 'Programador';
+        $info->save();
+        return 'Datos Actualizados';
     }
 
     /**

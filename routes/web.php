@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('hola', 'HolaController'); // ruta Simple
+/* Route::get('hola', 'HolaController'); // ruta Simple
 
 Route::get('usuario/{nombre?}', 'UsuarioController@usuarioUnParametro')->name('usuarionombre');
 
@@ -48,4 +48,6 @@ Route::resource('/varios', 'variosmetodosrecursos');
 
 Route::resource('/varios1', 'variosmetodosrecursos')->only(['index', 'show']); // solo estos
 
-Route::resource('/varios2', 'variosmetodosrecursos')->except(['create', 'store', 'update', 'destroy']); // no apareceran estos
+Route::resource('/varios2', 'variosmetodosrecursos')->except(['create', 'store', 'update', 'destroy']); // no apareceran estos */
+
+Route::resource('/varios', 'variosmetodosrecursos');
