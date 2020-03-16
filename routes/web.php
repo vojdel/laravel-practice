@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
 /* Route::get('hola', 'HolaController'); // ruta Simple
 
 Route::get('usuario/{nombre?}', 'UsuarioController@usuarioUnParametro')->name('usuarionombre');
@@ -40,9 +45,6 @@ Route::get('redirigirprueba1', function(){
 });
 
 Route::redirect('/prueba3', '/prueba');
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/varios', 'variosmetodosrecursos');
 
